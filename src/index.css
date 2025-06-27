@@ -109,6 +109,24 @@
   .skill-bar {
     @apply bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000;
   }
+
+  .slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
 }
 
 @keyframes float {
@@ -127,6 +145,28 @@
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out;
 }
@@ -135,3 +175,5 @@
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }

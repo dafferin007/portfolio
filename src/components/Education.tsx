@@ -40,7 +40,7 @@ const Education = () => {
   return (
     <section id="education" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             Education
           </h2>
@@ -52,41 +52,46 @@ const Education = () => {
         <div className="max-w-4xl mx-auto">
           <div className="space-y-8">
             {educationData.map((edu, index) => (
-              <Card key={index} className="card-hover">
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                    <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${edu.color} text-white shrink-0`}>
-                      <edu.icon size={32} />
-                    </div>
-                    
-                    <div className="flex-1 space-y-3">
-                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
-                        <h3 className="text-xl lg:text-2xl font-bold text-gray-800">
-                          {edu.degree}
-                        </h3>
-                        <div className="flex gap-2">
-                          <Badge variant="outline">{edu.year}</Badge>
-                          <Badge 
-                            variant={edu.status === 'In Progress' ? 'default' : 'secondary'}
-                          >
-                            {edu.status}
-                          </Badge>
-                        </div>
+              <div 
+                key={index} 
+                className={`${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'} stagger-${index + 1}`}
+              >
+                <Card className="card-hover">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                      <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${edu.color} text-white shrink-0`}>
+                        <edu.icon size={32} />
                       </div>
                       
-                      <div className="space-y-2">
-                        <p className="text-lg font-medium text-gray-700">
-                          {edu.institution}
-                        </p>
-                        <p className="text-gray-600">{edu.location}</p>
-                        <p className="text-lg font-semibold text-blue-600">
-                          {edu.grade}
-                        </p>
+                      <div className="flex-1 space-y-3">
+                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+                          <h3 className="text-xl lg:text-2xl font-bold text-gray-800">
+                            {edu.degree}
+                          </h3>
+                          <div className="flex gap-2">
+                            <Badge variant="outline">{edu.year}</Badge>
+                            <Badge 
+                              variant={edu.status === 'In Progress' ? 'default' : 'secondary'}
+                            >
+                              {edu.status}
+                            </Badge>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <p className="text-lg font-medium text-gray-700">
+                            {edu.institution}
+                          </p>
+                          <p className="text-gray-600">{edu.location}</p>
+                          <p className="text-lg font-semibold text-blue-600">
+                            {edu.grade}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

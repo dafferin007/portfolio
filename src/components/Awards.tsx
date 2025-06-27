@@ -40,7 +40,7 @@ const Awards = () => {
   return (
     <section id="awards" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             Awards & Recognition
           </h2>
@@ -52,47 +52,52 @@ const Awards = () => {
         <div className="max-w-5xl mx-auto">
           <div className="space-y-8">
             {awards.map((award, index) => (
-              <Card key={index} className="card-hover">
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row gap-6">
-                    <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${award.color} text-white shrink-0 self-start`}>
-                      <award.icon size={40} />
-                    </div>
-                    
-                    <div className="flex-1 space-y-4">
-                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
-                        <div>
-                          <h3 className="text-xl lg:text-2xl font-bold text-gray-800 mb-2">
-                            {award.title}
-                          </h3>
-                          <div className="space-y-1">
-                            <p className="text-lg font-semibold text-blue-600">
-                              {award.event}
-                            </p>
-                            <p className="text-gray-600">{award.organization}</p>
+              <div 
+                key={index} 
+                className={`${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'} stagger-${index + 1}`}
+              >
+                <Card className="card-hover">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col lg:flex-row gap-6">
+                      <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${award.color} text-white shrink-0 self-start`}>
+                        <award.icon size={40} />
+                      </div>
+                      
+                      <div className="flex-1 space-y-4">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
+                          <div>
+                            <h3 className="text-xl lg:text-2xl font-bold text-gray-800 mb-2">
+                              {award.title}
+                            </h3>
+                            <div className="space-y-1">
+                              <p className="text-lg font-semibold text-blue-600">
+                                {award.event}
+                              </p>
+                              <p className="text-gray-600">{award.organization}</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex flex-col lg:items-end gap-2">
+                            <Badge 
+                              variant="default" 
+                              className={`${award.rank === 'Winner' ? 'bg-yellow-500' : award.rank === '1st Place' ? 'bg-blue-500' : 'bg-green-500'} text-white`}
+                            >
+                              {award.rank}
+                            </Badge>
+                            <Badge variant="outline" className="font-medium">
+                              {award.prize}
+                            </Badge>
                           </div>
                         </div>
                         
-                        <div className="flex flex-col lg:items-end gap-2">
-                          <Badge 
-                            variant="default" 
-                            className={`${award.rank === 'Winner' ? 'bg-yellow-500' : award.rank === '1st Place' ? 'bg-blue-500' : 'bg-green-500'} text-white`}
-                          >
-                            {award.rank}
-                          </Badge>
-                          <Badge variant="outline" className="font-medium">
-                            {award.prize}
-                          </Badge>
-                        </div>
+                        <p className="text-gray-700 leading-relaxed">
+                          {award.description}
+                        </p>
                       </div>
-                      
-                      <p className="text-gray-700 leading-relaxed">
-                        {award.description}
-                      </p>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
