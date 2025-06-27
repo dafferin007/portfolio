@@ -91,15 +91,15 @@
 /* Custom animations and effects */
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-800 bg-clip-text text-transparent;
   }
   
   .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4c1d95 0%, #312e81 25%, #1e3a8a 50%, #1e40af 75%, #3730a3 100%);
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+    @apply transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20;
   }
   
   .float-animation {
@@ -107,26 +107,71 @@
   }
   
   .skill-bar {
-    @apply bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000;
+    @apply bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-700 h-2 rounded-full transition-all duration-1000;
   }
 
-  .slide-in-left {
-    animation: slideInLeft 0.8s ease-out forwards;
+  /* Scroll-triggered animations */
+  .scroll-reveal {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateY(60px) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
-  .slide-in-right {
-    animation: slideInRight 0.8s ease-out forwards;
-    opacity: 0;
-    transform: translateX(50px);
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
   
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  .slide-from-left {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(-100px) rotate(-5deg);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
+  
+  .slide-from-left.active {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+  
+  .slide-from-right {
+    opacity: 0;
+    transform: translateX(100px) rotate(5deg);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .slide-from-right.active {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+  
+  .pop-in {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .pop-in.active {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  
+  .profile-slide {
+    opacity: 0;
+    transform: translateX(-200px) scale(0.8);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .profile-slide.active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+  .stagger-6 { transition-delay: 0.6s; }
 }
 
 @keyframes float {
@@ -134,46 +179,11 @@
   50% { transform: translateY(-20px); }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+/* Deep purple-blue glowing effects */
+.glow-effect {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3), 0 0 60px rgba(147, 51, 234, 0.2);
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.text-glow {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(147, 51, 234, 0.3);
 }
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
