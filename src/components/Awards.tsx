@@ -46,13 +46,13 @@ const Awards = () => {
   const awardVisibles = [award1Visible, award2Visible, award3Visible];
 
   return (
-    <section id="awards" className="py-20 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
+    <section id="awards" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white text-glow">
             Awards & Recognition
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-purple-100 max-w-3xl mx-auto">
             Recognition for innovation and excellence in technology competitions
           </p>
         </div>
@@ -66,7 +66,7 @@ const Awards = () => {
                 className={`${index % 2 === 0 ? 'slide-from-left' : 'slide-from-right'} ${awardVisibles[index] ? 'active' : ''}`}
                 style={{ transitionDelay: `${index * 0.3}s` }}
               >
-                <Card className="card-hover bg-white/90 backdrop-blur-sm border-0 shadow-2xl">
+                <Card className="card-hover bg-gray-800/50 backdrop-blur-sm border-purple-500/30 shadow-2xl">
                   <CardContent className="p-8">
                     <div className="flex flex-col lg:flex-row gap-6">
                       <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${award.color} text-white shrink-0 self-start shadow-lg`}>
@@ -76,14 +76,14 @@ const Awards = () => {
                       <div className="flex-1 space-y-4">
                         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                           <div>
-                            <h3 className="text-xl lg:text-2xl font-bold text-gray-800 mb-2">
+                            <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
                               {award.title}
                             </h3>
                             <div className="space-y-1">
-                              <p className="text-lg font-semibold text-blue-600">
+                              <p className="text-lg font-semibold text-purple-300">
                                 {award.event}
                               </p>
-                              <p className="text-gray-600">{award.organization}</p>
+                              <p className="text-purple-200">{award.organization}</p>
                             </div>
                           </div>
                           
@@ -94,13 +94,13 @@ const Awards = () => {
                             >
                               {award.rank}
                             </Badge>
-                            <Badge variant="outline" className="font-medium border-gray-300">
+                            <Badge variant="outline" className="font-medium border-purple-400/30 text-purple-200">
                               {award.prize}
                             </Badge>
                           </div>
                         </div>
                         
-                        <p className="text-gray-700 leading-relaxed">
+                        <p className="text-purple-100 leading-relaxed">
                           {award.description}
                         </p>
                       </div>

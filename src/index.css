@@ -84,18 +84,18 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gray-900 text-foreground;
   }
 }
 
 /* Custom animations and effects */
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-800 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent;
   }
   
   .gradient-bg {
-    background: linear-gradient(135deg, #4c1d95 0%, #312e81 25%, #1e3a8a 50%, #1e40af 75%, #3730a3 100%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7b2cbf 100%);
   }
   
   .card-hover {
@@ -181,9 +181,9 @@
 
 /* Deep purple-blue glowing effects */
 .glow-effect {
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3), 0 0 60px rgba(147, 51, 234, 0.2);
+  box-shadow: 0 0 30px rgba(147, 51, 234, 0.3), 0 0 60px rgba(99, 102, 241, 0.2);
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(147, 51, 234, 0.3);
+  text-shadow: 0 0 20px rgba(147, 51, 234, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
 }
