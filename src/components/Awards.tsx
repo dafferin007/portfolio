@@ -2,8 +2,13 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Award, Medal } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Awards = () => {
+  const [award1Ref, award1Visible] = useScrollAnimation(0.2);
+  const [award2Ref, award2Visible] = useScrollAnimation(0.2);
+  const [award3Ref, award3Visible] = useScrollAnimation(0.2);
+
   const awards = [
     {
       title: 'Best Project Award - IoT-Based Assist System for Blind People',
@@ -37,10 +42,13 @@ const Awards = () => {
     },
   ];
 
+  const awardRefs = [award1Ref, award2Ref, award3Ref];
+  const awardVisibles = [award1Visible, award2Visible, award3Visible];
+
   return (
-    <section id="awards" className="py-20 bg-gray-50">
+    <section id="awards" className="py-20 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 fade-in-up">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             Awards & Recognition
           </h2>
@@ -54,12 +62,14 @@ const Awards = () => {
             {awards.map((award, index) => (
               <div 
                 key={index} 
-                className={`${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'} stagger-${index + 1}`}
+                ref={awardRefs[index]}
+                className={`${index % 2 === 0 ? 'slide-from-left' : 'slide-from-right'} ${awardVisibles[index] ? 'active' : ''}`}
+                style={{ transitionDelay: `${index * 0.3}s` }}
               >
-                <Card className="card-hover">
+                <Card className="card-hover bg-white/90 backdrop-blur-sm border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <div className="flex flex-col lg:flex-row gap-6">
-                      <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${award.color} text-white shrink-0 self-start`}>
+                      <div className={`inline-flex p-4 rounded-full bg-gradient-to-br ${award.color} text-white shrink-0 self-start shadow-lg`}>
                         <award.icon size={40} />
                       </div>
                       
@@ -80,11 +90,11 @@ const Awards = () => {
                           <div className="flex flex-col lg:items-end gap-2">
                             <Badge 
                               variant="default" 
-                              className={`${award.rank === 'Winner' ? 'bg-yellow-500' : award.rank === '1st Place' ? 'bg-blue-500' : 'bg-green-500'} text-white`}
+                              className={`${award.rank === 'Winner' ? 'bg-yellow-500' : award.rank === '1st Place' ? 'bg-blue-500' : 'bg-green-500'} text-white shadow-md`}
                             >
                               {award.rank}
                             </Badge>
-                            <Badge variant="outline" className="font-medium">
+                            <Badge variant="outline" className="font-medium border-gray-300">
                               {award.prize}
                             </Badge>
                           </div>
