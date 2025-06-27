@@ -10,6 +10,7 @@ const Skills = () => {
   const [cert1Ref, cert1Visible] = useScrollAnimation(0.3);
   const [cert2Ref, cert2Visible] = useScrollAnimation(0.3);
   const [cert3Ref, cert3Visible] = useScrollAnimation(0.3);
+  const [cert4Ref, cert4Visible] = useScrollAnimation(0.3);
 
   const technicalSkills = [
     { name: 'C', category: 'Programming', color: 'from-purple-600 to-indigo-700' },
@@ -17,6 +18,12 @@ const Skills = () => {
     { name: 'Java', category: 'Programming', color: 'from-blue-600 to-purple-600' },
     { name: 'Python', category: 'Programming', color: 'from-purple-700 to-blue-700' },
     { name: 'HTML', category: 'Web', color: 'from-indigo-700 to-purple-800' },
+    { name: 'CSS', category: 'Web', color: 'from-purple-800 to-indigo-800' },
+    { name: 'Git', category: 'Technologies', color: 'from-purple-600 to-blue-700' },
+    { name: 'GitHub', category: 'Technologies', color: 'from-indigo-600 to-purple-600' },
+    { name: 'Computer Networking', category: 'Computer Science', color: 'from-blue-700 to-purple-700' },
+    { name: 'Cloud Computing', category: 'Computer Science', color: 'from-purple-700 to-indigo-700' },
+    { name: 'Linux OS', category: 'Computer Science', color: 'from-indigo-700 to-blue-700' },
     { name: 'Data Structures', category: 'Computer Science', color: 'from-purple-800 to-indigo-800' },
   ];
 
@@ -39,10 +46,16 @@ const Skills = () => {
       year: '2024',
       color: 'from-blue-600 to-purple-600',
     },
+    {
+      title: 'Problem Solving Certificate',
+      provider: 'HackerRank',
+      year: '2024',
+      color: 'from-purple-700 to-blue-700',
+    },
   ];
 
-  const certRefs = [cert1Ref, cert2Ref, cert3Ref];
-  const certVisibles = [cert1Visible, cert2Visible, cert3Visible];
+  const certRefs = [cert1Ref, cert2Ref, cert3Ref, cert4Ref];
+  const certVisibles = [cert1Visible, cert2Visible, cert3Visible, cert4Visible];
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900">
@@ -66,7 +79,7 @@ const Skills = () => {
                   {technicalSkills.map((skill, index) => (
                     <div
                       key={index}
-                      className={`pop-in ${skillsVisible ? 'active' : ''} stagger-${index + 1}`}
+                      className={`pop-in ${skillsVisible ? 'active' : ''} stagger-${Math.min(index + 1, 6)}`}
                     >
                       <div className={`group relative bg-gradient-to-br ${skill.color} p-6 rounded-2xl border border-purple-400/30 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-rotate-1 cursor-pointer backdrop-blur-sm`}>
                         <div className="text-white text-center">

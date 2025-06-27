@@ -72,7 +72,7 @@ const Hero = () => {
             <div className="relative">
               <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-white/20 shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face"
+                  src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
                   alt="Dafferin S - Computer Science Student"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
