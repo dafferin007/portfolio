@@ -16,21 +16,21 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Name and content sliding from left */}
+          {/* Left side - Name and content sliding from left with emergence effect */}
           <div className="slide-from-left active">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 fade-in-up text-glow">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 fade-in-up text-glow emerge-text">
               Dafferin S
             </h1>
-            <p className="text-xl md:text-2xl mb-6 text-purple-100 fade-in-up stagger-1 font-medium">
+            <p className="text-xl md:text-2xl mb-6 text-purple-100 fade-in-up stagger-1 font-medium emerge-text">
               Computer Science Engineering Student
             </p>
-            <p className="text-lg md:text-xl mb-8 leading-relaxed fade-in-up stagger-2 text-indigo-100">
+            <p className="text-lg md:text-xl mb-8 leading-relaxed fade-in-up stagger-2 text-indigo-100 emerge-text">
               Passionate about Artificial Intelligence, Web Development, and creating innovative solutions 
               that make a difference in people's lives.
             </p>
             
             {/* Social Links */}
-            <div className="flex gap-6 mb-8 fade-in-up stagger-3">
+            <div className="flex gap-6 mb-8 fade-in-up stagger-3 emerge-text">
               <Button
                 variant="outline"
                 size="lg"
@@ -57,7 +57,7 @@ const Hero = () => {
             
             <Button
               size="lg"
-              className="bg-white text-purple-700 hover:bg-gray-100 hover:scale-105 transition-all duration-300 fade-in-up stagger-4 px-8 py-4 text-lg font-semibold shadow-2xl"
+              className="bg-white text-purple-700 hover:bg-gray-100 hover:scale-105 transition-all duration-300 fade-in-up stagger-4 px-8 py-4 text-lg font-semibold shadow-2xl emerge-text"
               asChild
             >
               <a href="#about">

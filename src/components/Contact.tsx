@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Send } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
@@ -11,13 +11,6 @@ const Contact = () => {
       value: 'dafferin007@gmail.com',
       href: 'mailto:dafferin007@gmail.com',
       color: 'text-red-500',
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91 8610707637',
-      href: 'tel:+918610707637',
-      color: 'text-green-500',
     },
     {
       icon: MapPin,
@@ -129,18 +122,6 @@ const Contact = () => {
                       <a href="mailto:dafferin007@gmail.com">
                         <Mail className="mr-2" size={20} />
                         Send Email
-                      </a>
-                    </Button>
-                    
-                    <Button 
-                      variant="outline" 
-                      size="lg" 
-                      className="w-full"
-                      asChild
-                    >
-                      <a href="tel:+918610707637">
-                        <Phone className="mr-2" size={20} />
-                        Call Now
                       </a>
                     </Button>
                   </div>

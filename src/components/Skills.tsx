@@ -2,7 +2,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Code, Database, Globe, Server, GitBranch, Github, Network, Cloud, Terminal } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Skills = () => {
@@ -13,18 +13,18 @@ const Skills = () => {
   const [cert4Ref, cert4Visible] = useScrollAnimation(0.3);
 
   const technicalSkills = [
-    { name: 'C', category: 'Programming', color: 'from-purple-600 to-indigo-700' },
-    { name: 'C++', category: 'Programming', color: 'from-indigo-600 to-purple-700' },
-    { name: 'Java', category: 'Programming', color: 'from-blue-600 to-purple-600' },
-    { name: 'Python', category: 'Programming', color: 'from-purple-700 to-blue-700' },
-    { name: 'HTML', category: 'Web', color: 'from-indigo-700 to-purple-800' },
-    { name: 'CSS', category: 'Web', color: 'from-purple-800 to-indigo-800' },
-    { name: 'Git', category: 'Technologies', color: 'from-purple-600 to-blue-700' },
-    { name: 'GitHub', category: 'Technologies', color: 'from-indigo-600 to-purple-600' },
-    { name: 'Computer Networking', category: 'Computer Science', color: 'from-blue-700 to-purple-700' },
-    { name: 'Cloud Computing', category: 'Computer Science', color: 'from-purple-700 to-indigo-700' },
-    { name: 'Linux OS', category: 'Computer Science', color: 'from-indigo-700 to-blue-700' },
-    { name: 'Data Structures', category: 'Computer Science', color: 'from-purple-800 to-indigo-800' },
+    { name: 'C', category: 'Programming', color: 'from-purple-600 to-indigo-700', icon: Code },
+    { name: 'C++', category: 'Programming', color: 'from-indigo-600 to-purple-700', icon: Code },
+    { name: 'Java', category: 'Programming', color: 'from-blue-600 to-purple-600', icon: Code },
+    { name: 'Python', category: 'Programming', color: 'from-purple-700 to-blue-700', icon: Code },
+    { name: 'HTML', category: 'Web', color: 'from-indigo-700 to-purple-800', icon: Globe },
+    { name: 'CSS', category: 'Web', color: 'from-purple-800 to-indigo-800', icon: Globe },
+    { name: 'Git', category: 'Technologies', color: 'from-purple-600 to-blue-700', icon: GitBranch },
+    { name: 'GitHub', category: 'Technologies', color: 'from-indigo-600 to-purple-600', icon: Github },
+    { name: 'Computer Networking', category: 'Computer Science', color: 'from-blue-700 to-purple-700', icon: Network },
+    { name: 'Cloud Computing', category: 'Computer Science', color: 'from-purple-700 to-indigo-700', icon: Cloud },
+    { name: 'Linux OS', category: 'Computer Science', color: 'from-indigo-700 to-blue-700', icon: Terminal },
+    { name: 'Data Structures', category: 'Computer Science', color: 'from-purple-800 to-indigo-800', icon: Database },
   ];
 
   const certifications = [
@@ -83,6 +83,9 @@ const Skills = () => {
                     >
                       <div className={`group relative bg-gradient-to-br ${skill.color} p-6 rounded-2xl border border-purple-400/30 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-rotate-1 cursor-pointer backdrop-blur-sm`}>
                         <div className="text-white text-center">
+                          <div className="flex justify-center mb-3">
+                            <skill.icon size={32} className="text-white" />
+                          </div>
                           <h4 className="text-lg font-bold mb-3">{skill.name}</h4>
                           <Badge variant="secondary" className="bg-white/20 text-white border-0 backdrop-blur-sm">
                             {skill.category}

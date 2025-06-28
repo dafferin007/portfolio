@@ -8,12 +8,14 @@ const Awards = () => {
   const [award1Ref, award1Visible] = useScrollAnimation(0.2);
   const [award2Ref, award2Visible] = useScrollAnimation(0.2);
   const [award3Ref, award3Visible] = useScrollAnimation(0.2);
+  const [award4Ref, award4Visible] = useScrollAnimation(0.2);
 
   const awards = [
     {
       title: 'Best Project Award - IoT-Based Assist System for Blind People',
       event: 'IITM PALS INNOWAH\'25',
       organization: 'IIT Madras',
+      location: 'Chennai',
       prize: '₹10,000 Cash Prize',
       description: 'Received recognition for innovative IoT solution helping visually impaired individuals',
       icon: Trophy,
@@ -24,26 +26,39 @@ const Awards = () => {
       title: 'First Prize & Project Funding',
       event: 'TECHNO INNOVATIVE\'25',
       organization: 'Mepco Schlenk Engineering College',
-      prize: 'Project Funding',
+      location: 'Sivakasi',
+      prize: '₹5,000 Cash Prize + Project Funding',
       description: 'Secured first position and funding for IoT-Based Assist System for Blind People',
       icon: Award,
       color: 'from-blue-500 to-purple-600',
       rank: '1st Place',
     },
     {
-      title: 'Second Prize - IoT Project',
-      event: 'CEREBRIA\'24',
-      organization: 'Bannari Amman Institute Of Technology',
-      prize: 'Runner-up',
-      description: 'Won second place for innovative IoT-based project presentation',
+      title: 'Second Prize - Safe and Sustainable World Project',
+      event: 'IITM PALS INNOWAH\'24',
+      organization: 'IIT Madras',
+      location: 'Nagercoil',
+      prize: '₹10,000 Cash Prize',
+      description: 'Won second place for innovative project in the domain of "a safe and sustainable world"',
       icon: Medal,
       color: 'from-green-500 to-teal-600',
       rank: '2nd Place',
     },
+    {
+      title: 'Second Prize - IoT Project',
+      event: 'CEREBRIA\'24',
+      organization: 'Bannari Amman Institute Of Technology',
+      location: 'Sathyamangalam',
+      prize: 'Runner-up',
+      description: 'Won second place for innovative IoT-based project presentation',
+      icon: Medal,
+      color: 'from-purple-500 to-indigo-600',
+      rank: '2nd Place',
+    },
   ];
 
-  const awardRefs = [award1Ref, award2Ref, award3Ref];
-  const awardVisibles = [award1Visible, award2Visible, award3Visible];
+  const awardRefs = [award1Ref, award2Ref, award3Ref, award4Ref];
+  const awardVisibles = [award1Visible, award2Visible, award3Visible, award4Visible];
 
   return (
     <section id="awards" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900">
@@ -84,6 +99,7 @@ const Awards = () => {
                                 {award.event}
                               </p>
                               <p className="text-purple-200">{award.organization}</p>
+                              <p className="text-purple-200 text-sm">{award.location}</p>
                             </div>
                           </div>
                           
