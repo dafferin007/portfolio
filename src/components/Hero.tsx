@@ -1,3 +1,4 @@
+import dafferinImage from "@/assets/dafferin.png";
 
 import { ArrowDown, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
