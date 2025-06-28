@@ -70,28 +70,26 @@ const Skills = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Technical Skills - Hexagonal Boxes */}
+          {/* Technical Skills - Just logos */}
           <div ref={skillsRef} className={`scroll-reveal ${skillsVisible ? 'active' : ''}`}>
             <Card className="card-hover bg-gray-800/50 backdrop-blur-sm border-purple-500/30 shadow-2xl">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-8 text-center text-white">Technical Skills</h3>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
                   {technicalSkills.map((skill, index) => (
                     <div
                       key={index}
                       className={`pop-in ${skillsVisible ? 'active' : ''} stagger-${Math.min(index + 1, 6)}`}
                     >
-                      <div className={`group relative bg-gradient-to-br ${skill.color} p-6 rounded-2xl border border-purple-400/30 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-rotate-1 cursor-pointer backdrop-blur-sm`}>
-                        <div className="text-white text-center">
-                          <div className="flex justify-center mb-3">
-                            <skill.icon size={32} className="text-white" />
-                          </div>
-                          <h4 className="text-lg font-bold mb-3">{skill.name}</h4>
-                          <Badge variant="secondary" className="bg-white/20 text-white border-0 backdrop-blur-sm">
-                            {skill.category}
-                          </Badge>
+                      <div className="group relative cursor-pointer">
+                        <div className={`flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.color} rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-rotate-6`}>
+                          <skill.icon size={32} className="text-white" />
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                        
+                        {/* Tooltip */}
+                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
+                          {skill.name}
+                        </div>
                       </div>
                     </div>
                   ))}

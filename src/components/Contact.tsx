@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Send } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
@@ -12,26 +12,19 @@ const Contact = () => {
       href: 'mailto:dafferin007@gmail.com',
       color: 'text-red-500',
     },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: 'Sivakasi, Tamil Nadu, India',
-      href: '#',
-      color: 'text-blue-500',
-    },
   ];
 
   const socialLinks = [
     {
       icon: Github,
       label: 'GitHub',
-      href: '#',
+      href: 'https://github.com/dafferin007',
       color: 'hover:text-gray-800',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: '#',
+      href: 'https://www.linkedin.com/in/dafferin-s-a64876280/',
       color: 'hover:text-blue-600',
     },
   ];

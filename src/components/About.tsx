@@ -39,9 +39,10 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
-            I'm a dedicated Computer Science Engineering student at Mepco Schlenk Engineering College 
-            with a passion for creating innovative technological solutions. My journey in technology 
-            is driven by curiosity and a desire to make a positive impact through code.
+            Hello! I'm Dafferin S, an Electrical and Electronics Engineering student with a strong passion for software development and technology. While my academic background lies in core engineering, I've actively explored the world of programming through C, C++, Java, and Python, along with web development using HTML and CSS. I'm also well-versed in Git, GitHub, Linux, cloud computing, and computer networking.
+          </p>
+          <p className="text-xl text-purple-100 max-w-4xl mx-auto leading-relaxed mt-6">
+            I enjoy building practical solutions, learning new technologies, and working on projects that challenge me to grow. My interests lie at the intersection of hardware and software, and I'm constantly seeking opportunities to innovate. I'm currently exploring open-source contributions and looking forward to collaborating on impactful tech projects.
           </p>
         </div>
 
@@ -55,7 +56,7 @@ const About = () => {
               <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-purple-500/30 shadow-2xl">
                 <img 
                   src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
-                  alt="Dafferin S - Computer Science Student"
+                  alt="Dafferin S - EEE Student passionate in Software"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
               </div>

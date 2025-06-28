@@ -22,10 +22,10 @@ const Hero = () => {
               Dafferin S
             </h1>
             <p className="text-xl md:text-2xl mb-6 text-purple-100 fade-in-up stagger-1 font-medium emerge-text">
-              Computer Science Engineering Student
+              EEE Student Passionate in Software
             </p>
             <p className="text-lg md:text-xl mb-8 leading-relaxed fade-in-up stagger-2 text-indigo-100 emerge-text">
-              Passionate about Artificial Intelligence, Web Development, and creating innovative solutions 
+              Electrical and Electronics Engineering student with a passion for software development and creating innovative solutions 
               that make a difference in people's lives.
             </p>
             
@@ -37,7 +37,7 @@ const Hero = () => {
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
                 asChild
               >
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/dafferin007" target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2" size={20} />
                   GitHub
                 </a>
@@ -48,7 +48,7 @@ const Hero = () => {
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
                 asChild
               >
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/dafferin-s-a64876280/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="mr-2" size={20} />
                   LinkedIn
                 </a>
@@ -73,7 +73,7 @@ const Hero = () => {
               <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-white/20 shadow-2xl">
                 <img 
                   src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
-                  alt="Dafferin S - Computer Science Student"
+                  alt="Dafferin S - EEE Student passionate in Software"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
               </div>
