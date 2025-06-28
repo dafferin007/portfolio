@@ -1,11 +1,9 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Brain, Code, Users, Target, Lightbulb, Clock, Laptop } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const About = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
-  const [profileRef, profileVisible] = useScrollAnimation();
   const [interestsRef, interestsVisible] = useScrollAnimation();
   const [skillsRef, skillsVisible] = useScrollAnimation();
 
@@ -47,30 +45,10 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-16">
-          {/* Profile Picture Section */}
-          <div 
-            ref={profileRef}
-            className={`flex justify-center lg:justify-start profile-slide ${profileVisible ? 'active' : ''}`}
-          >
-            <div className="relative">
-              <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-purple-500/30 shadow-2xl">
-                <img 
-                  src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
-                  alt="Dafferin S - EEE Student passionate in Software"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center border-4 border-gray-900 shadow-xl">
-                <Code className="text-white" size={32} />
-              </div>
-            </div>
-          </div>
-
-          {/* Interests */}
+        <div className="grid lg:grid-cols-1 gap-16 mb-16">
           <div 
             ref={interestsRef}
-            className={`slide-from-right ${interestsVisible ? 'active' : ''}`}
+            className={`slide-from-right ${interestsVisible ? 'active' : ''} max-w-2xl mx-auto`}
           >
             <Card className="card-hover bg-gray-800/50 border-purple-500/30 backdrop-blur-sm">
               <CardContent className="p-8">
@@ -93,7 +71,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Personal Skills - Smaller */}
         <div 
           ref={skillsRef}
           className={`scroll-reveal ${skillsVisible ? 'active' : ''}`}

@@ -72,8 +72,12 @@ const Hero = () => {
               <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-white/20 shadow-2xl">
                 <img 
                   src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
-                  alt="Dafferin S - Software Developer | Web Developer | Tech Enthusiast"
+                  alt="Dafferin S - Software Developer"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                  onError={(e) => {
+                    console.log('Image failed to load:', e);
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face';
+                  }}
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
