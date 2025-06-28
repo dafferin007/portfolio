@@ -37,19 +37,19 @@ const Skills = () => {
     {
       title: 'Java Basics',
       provider: 'HackerRank',
-      year: '2024',
+      year: '2025',
       color: 'from-indigo-600 to-purple-700',
     },
     {
       title: 'Programming with Java',
       provider: 'NPTEL',
-      year: '2024',
+      year: '2025',
       color: 'from-blue-600 to-purple-600',
     },
     {
       title: 'Problem Solving Certificate',
       provider: 'HackerRank',
-      year: '2024',
+      year: '2025',
       color: 'from-purple-700 to-blue-700',
     },
   ];
@@ -70,27 +70,26 @@ const Skills = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Technical Skills - Just logos */}
+          {/* Technical Skills - Back to cards */}
           <div ref={skillsRef} className={`scroll-reveal ${skillsVisible ? 'active' : ''}`}>
             <Card className="card-hover bg-gray-800/50 backdrop-blur-sm border-purple-500/30 shadow-2xl">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-8 text-center text-white">Technical Skills</h3>
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                   {technicalSkills.map((skill, index) => (
                     <div
                       key={index}
                       className={`pop-in ${skillsVisible ? 'active' : ''} stagger-${Math.min(index + 1, 6)}`}
                     >
-                      <div className="group relative cursor-pointer">
-                        <div className={`flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.color} rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-rotate-6`}>
-                          <skill.icon size={32} className="text-white" />
-                        </div>
-                        
-                        {/* Tooltip */}
-                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                          {skill.name}
-                        </div>
-                      </div>
+                      <Card className="card-hover text-center bg-gray-700/50 border-purple-500/20 backdrop-blur-sm">
+                        <CardContent className="p-4">
+                          <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${skill.color} text-white mb-3 shadow-lg`}>
+                            <skill.icon size={20} />
+                          </div>
+                          <h4 className="text-sm font-bold text-white">{skill.name}</h4>
+                          <p className="text-xs text-purple-200 mt-1">{skill.category}</p>
+                        </CardContent>
+                      </Card>
                     </div>
                   ))}
                 </div>

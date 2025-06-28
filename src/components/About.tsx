@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Brain, Code, Users, Target, Lightbulb, Clock } from 'lucide-react';
+import { Brain, Code, Users, Target, Lightbulb, Clock, Laptop } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const About = () => {
@@ -20,6 +20,7 @@ const About = () => {
   const interests = [
     { icon: Brain, title: 'Artificial Intelligence', color: 'text-purple-400' },
     { icon: Code, title: 'Web Development', color: 'text-indigo-400' },
+    { icon: Laptop, title: 'Software Development', color: 'text-blue-400' },
   ];
 
   return (
