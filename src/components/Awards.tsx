@@ -15,7 +15,6 @@ const Awards = () => {
       title: 'Best Project Award - IoT-Based Assist System for Blind People',
       event: 'IITM PALS INNOWAH\'25',
       organization: 'IIT Madras',
-      location: 'Chennai',
       prize: '₹10,000 Cash Prize',
       description: 'Received recognition for innovative IoT solution helping visually impaired individuals',
       icon: Trophy,
@@ -26,7 +25,6 @@ const Awards = () => {
       title: 'First Prize & Project Funding',
       event: 'TECHNO INNOVATIVE\'25',
       organization: 'Mepco Schlenk Engineering College',
-      location: 'Sivakasi',
       prize: '₹5,000 Cash Prize + Project Funding',
       description: 'Secured first position and funding for IoT-Based Assist System for Blind People',
       icon: Award,
@@ -37,7 +35,6 @@ const Awards = () => {
       title: 'Second Prize - Safe and Sustainable World Project',
       event: 'IITM PALS INNOWAH\'24',
       organization: 'IIT Madras',
-      location: 'Nagercoil',
       prize: '₹10,000 Cash Prize',
       description: 'Won second place for innovative project in the domain of "a safe and sustainable world"',
       icon: Medal,
@@ -48,7 +45,6 @@ const Awards = () => {
       title: 'Second Prize - IoT Project',
       event: 'CEREBRIA\'24',
       organization: 'Bannari Amman Institute Of Technology',
-      location: 'Sathyamangalam',
       prize: 'Runner-up',
       description: 'Won second place for innovative IoT-based project presentation',
       icon: Medal,
@@ -99,7 +95,6 @@ const Awards = () => {
                                 {award.event}
                               </p>
                               <p className="text-purple-200">{award.organization}</p>
-                              <p className="text-purple-200 text-sm">{award.location}</p>
                             </div>
                           </div>
                           

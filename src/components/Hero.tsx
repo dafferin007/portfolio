@@ -22,11 +22,10 @@ const Hero = () => {
               Dafferin S
             </h1>
             <p className="text-xl md:text-2xl mb-6 text-purple-100 fade-in-up stagger-1 font-medium emerge-text">
-              EEE Student Passionate in Software
+              Software Developer | Web Developer | Tech Enthusiast
             </p>
             <p className="text-lg md:text-xl mb-8 leading-relaxed fade-in-up stagger-2 text-indigo-100 emerge-text">
-              Electrical and Electronics Engineering student with a passion for software development and creating innovative solutions 
-              that make a difference in people's lives.
+              Passionate about software development and driven by the desire to create innovative solutions that have a real impact on people's lives. Always exploring new technologies and building projects that combine creativity with practical problem-solving.
             </p>
             
             {/* Social Links */}
@@ -73,7 +72,7 @@ const Hero = () => {
               <div className="w-80 h-80 rounded-3xl overflow-hidden glow-effect border-4 border-white/20 shadow-2xl">
                 <img 
                   src="/lovable-uploads/ad9d9714-3c00-432b-a2ed-c9aac6b72ecf.png"
-                  alt="Dafferin S - EEE Student passionate in Software"
+                  alt="Dafferin S - Software Developer | Web Developer | Tech Enthusiast"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
               </div>
