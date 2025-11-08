@@ -14,7 +14,183 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      conversations: {
+        Row: {
+          created_at: string | null
+          id: string
+          memory_id: string
+          title: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          memory_id: string
+          title?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          memory_id?: string
+          title?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations_memory_id_fkey"
+            columns: ["memory_id"]
+            isOneToOne: false
+            referencedRelation: "memories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memories: {
+        Row: {
+          created_at: string | null
+          date_of_birth: string | null
+          date_of_passing: string | null
+          id: string
+          name: string
+          personality_traits: Json | null
+          relationship: string | null
+          updated_at: string | null
+          user_id: string
+          voice_characteristics: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          date_of_passing?: string | null
+          id?: string
+          name: string
+          personality_traits?: Json | null
+          relationship?: string | null
+          updated_at?: string | null
+          user_id: string
+          voice_characteristics?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          date_of_birth?: string | null
+          date_of_passing?: string | null
+          id?: string
+          name?: string
+          personality_traits?: Json | null
+          relationship?: string | null
+          updated_at?: string | null
+          user_id?: string
+          voice_characteristics?: Json | null
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          audio_url: string | null
+          content: string
+          conversation_id: string
+          created_at: string | null
+          id: string
+          role: string
+        }
+        Insert: {
+          audio_url?: string | null
+          content: string
+          conversation_id: string
+          created_at?: string | null
+          id?: string
+          role: string
+        }
+        Update: {
+          audio_url?: string | null
+          content?: string
+          conversation_id?: string
+          created_at?: string | null
+          id?: string
+          role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      uploaded_media: {
+        Row: {
+          created_at: string | null
+          file_path: string | null
+          id: string
+          media_type: string
+          memory_id: string
+          metadata: Json | null
+          processed: boolean | null
+          text_content: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          file_path?: string | null
+          id?: string
+          media_type: string
+          memory_id: string
+          metadata?: Json | null
+          processed?: boolean | null
+          text_content?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          file_path?: string | null
+          id?: string
+          media_type?: string
+          memory_id?: string
+          metadata?: Json | null
+          processed?: boolean | null
+          text_content?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "uploaded_media_memory_id_fkey"
+            columns: ["memory_id"]
+            isOneToOne: false
+            referencedRelation: "memories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
