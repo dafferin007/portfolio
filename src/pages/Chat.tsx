@@ -27,7 +27,10 @@ export default function Chat() {
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
   const [sending, setSending] = useState(false);
+  const [voiceCredits, setVoiceCredits] = useState<number>(0);
+  const [playingAudio, setPlayingAudio] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (!user || !memoryId) {
@@ -53,6 +56,17 @@ export default function Chat() {
 
       if (memoryError) throw memoryError;
       setMemory(memoryData);
+
+      // Load user profile to get voice credits
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('voice_credits')
+        .eq('user_id', user!.id)
+        .single();
+      
+      if (profileData) {
+        setVoiceCredits(profileData.voice_credits);
+      }
 
       // Get or create conversation
       let { data: convData, error: convError } = await supabase
@@ -161,6 +175,77 @@ export default function Chat() {
     }
   };
 
+  const playVoiceResponse = async (messageId: string, text: string) => {
+    if (playingAudio === messageId) {
+      // Stop current audio
+      audioRef.current?.pause();
+      setPlayingAudio(null);
+      return;
+    }
+
+    if (voiceCredits <= 0) {
+      toast({
+        title: "Insufficient Credits",
+        description: "You need to purchase more voice credits.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      setPlayingAudio(messageId);
+
+      const { data, error } = await supabase.functions.invoke('text-to-speech', {
+        body: { text },
+        headers: {
+          Authorization: `Bearer ${(await supabase.auth.getSession()).data.session?.access_token}`
+        }
+      });
+
+      if (error) {
+        if (error.message?.includes('402') || error.message?.includes('Insufficient')) {
+          toast({
+            title: "Insufficient Credits",
+            description: "You need to purchase more voice credits.",
+            variant: "destructive"
+          });
+        } else {
+          throw error;
+        }
+        setPlayingAudio(null);
+        return;
+      }
+
+      // Create audio blob and play
+      const audioBlob = new Blob([data], { type: 'audio/mpeg' });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      
+      audioRef.current = new Audio(audioUrl);
+      audioRef.current.onended = () => {
+        setPlayingAudio(null);
+        URL.revokeObjectURL(audioUrl);
+      };
+      
+      await audioRef.current.play();
+
+      // Update credits locally
+      setVoiceCredits(prev => Math.max(0, prev - 1));
+
+    } catch (error: any) {
+      console.error('Error playing voice:', error);
+      toast({
+        title: "Error",
+        description: "Failed to generate voice response",
+        variant: "destructive"
+      });
+      setPlayingAudio(null);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b bg-card/50 backdrop-blur">
@@ -168,7 +253,7 @@ export default function Chat() {
           <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')}>
             <ArrowLeft className="w-5 h-5" />
           </Button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-1">
             <Heart className="w-8 h-8 text-primary" fill="currentColor" />
             <div>
               <h1 className="text-xl font-bold">
@@ -178,6 +263,10 @@ export default function Chat() {
                 <p className="text-sm text-muted-foreground">{memory.relationship}</p>
               )}
             </div>
+          </div>
+          <div className="text-sm">
+            <span className="text-muted-foreground">Voice Credits: </span>
+            <span className="font-semibold">{voiceCredits}</span>
           </div>
         </div>
       </header>
@@ -211,7 +300,22 @@ export default function Chat() {
                         : 'bg-card'
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{message.content}</p>
+                    <div className="flex items-start gap-2">
+                      <p className="flex-1 whitespace-pre-wrap">{message.content}</p>
+                      {message.role === 'assistant' && (
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 flex-shrink-0"
+                          onClick={() => playVoiceResponse(message.id, message.content)}
+                          disabled={playingAudio !== null && playingAudio !== message.id}
+                        >
+                          <Volume2 
+                            className={`w-4 h-4 ${playingAudio === message.id ? 'text-primary animate-pulse' : ''}`} 
+                          />
+                        </Button>
+                      )}
+                    </div>
                   </Card>
                 </div>
               ))}
@@ -220,9 +324,6 @@ export default function Chat() {
 
             <div className="border-t pt-4">
               <div className="flex gap-2">
-                <Button variant="outline" size="icon" disabled>
-                  <Mic className="w-5 h-5" />
-                </Button>
                 <Input
                   placeholder="Type your message..."
                   value={inputText}
@@ -238,12 +339,9 @@ export default function Chat() {
                 <Button onClick={sendMessage} disabled={!inputText.trim() || sending}>
                   <Send className="w-5 h-5" />
                 </Button>
-                <Button variant="outline" size="icon" disabled>
-                  <Volume2 className="w-5 h-5" />
-                </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-2 text-center">
-                Voice features coming soon
+                Click the speaker icon on AI messages to hear them (1 credit per message)
               </p>
             </div>
           </>
