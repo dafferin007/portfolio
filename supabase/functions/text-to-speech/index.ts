@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -12,14 +13,14 @@ serve(async (req) => {
   }
 
   try {
-    const { text, voice_id = "9BWtsMINqrJLrRacOk9x" } = await req.json(); // Default: Aria voice
+    const { text, voice = "alloy" } = await req.json();
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const elevenlabsKey = Deno.env.get('ELEVENLABS_API_KEY')!;
+    const openaiKey = Deno.env.get('OPENAI_API_KEY');
 
-    if (!elevenlabsKey) {
-      throw new Error('ElevenLabs API key not configured');
+    if (!openaiKey) {
+      throw new Error('OpenAI API key not configured');
     }
 
     const supabase = createClient(supabaseUrl, supabaseKey);
@@ -62,29 +63,24 @@ serve(async (req) => {
       });
     }
 
-    // Call ElevenLabs API
-    const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voice_id}`,
-      {
-        method: 'POST',
-        headers: {
-          'xi-api-key': elevenlabsKey,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          text,
-          model_id: 'eleven_multilingual_v2',
-          voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.75,
-          },
-        }),
-      }
-    );
+    // Call OpenAI TTS API
+    const response = await fetch('https://api.openai.com/v1/audio/speech', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${openaiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'tts-1',
+        input: text,
+        voice: voice,
+        response_format: 'mp3',
+      }),
+    });
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('ElevenLabs API error:', error);
+      console.error('OpenAI TTS error:', error);
       throw new Error('Text-to-speech conversion failed');
     }
 
