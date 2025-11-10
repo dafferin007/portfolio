@@ -18,6 +18,7 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
+          is_locked: boolean | null
           memory_id: string
           title: string | null
           updated_at: string | null
@@ -26,6 +27,7 @@ export type Database = {
         Insert: {
           created_at?: string | null
           id?: string
+          is_locked?: boolean | null
           memory_id: string
           title?: string | null
           updated_at?: string | null
@@ -34,6 +36,7 @@ export type Database = {
         Update: {
           created_at?: string | null
           id?: string
+          is_locked?: boolean | null
           memory_id?: string
           title?: string | null
           updated_at?: string | null
@@ -95,6 +98,7 @@ export type Database = {
           conversation_id: string
           created_at: string | null
           id: string
+          is_locked: boolean | null
           role: string
         }
         Insert: {
@@ -103,6 +107,7 @@ export type Database = {
           conversation_id: string
           created_at?: string | null
           id?: string
+          is_locked?: boolean | null
           role: string
         }
         Update: {
@@ -111,6 +116,7 @@ export type Database = {
           conversation_id?: string
           created_at?: string | null
           id?: string
+          is_locked?: boolean | null
           role?: string
         }
         Relationships: [
@@ -123,27 +129,71 @@ export type Database = {
           },
         ]
       }
+      playlists: {
+        Row: {
+          created_at: string
+          id: string
+          memory_id: string | null
+          name: string
+          songs: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          memory_id?: string | null
+          name: string
+          songs?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          memory_id?: string | null
+          name?: string
+          songs?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playlists_memory_id_fkey"
+            columns: ["memory_id"]
+            isOneToOne: false
+            referencedRelation: "memories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string | null
+          credits_last_reset: string | null
           full_name: string | null
           id: string
           updated_at: string | null
           user_id: string
+          voice_credits: number | null
         }
         Insert: {
           created_at?: string | null
+          credits_last_reset?: string | null
           full_name?: string | null
           id?: string
           updated_at?: string | null
           user_id: string
+          voice_credits?: number | null
         }
         Update: {
           created_at?: string | null
+          credits_last_reset?: string | null
           full_name?: string | null
           id?: string
           updated_at?: string | null
           user_id?: string
+          voice_credits?: number | null
         }
         Relationships: []
       }
@@ -196,7 +246,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      add_voice_credits: {
+        Args: { amount: number; user_uuid: string }
+        Returns: undefined
+      }
+      deduct_voice_credit: { Args: { user_uuid: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
