@@ -300,22 +300,7 @@ export default function Chat() {
                         : 'bg-card'
                     }`}
                   >
-                    <div className="flex items-start gap-2">
-                      <p className="flex-1 whitespace-pre-wrap">{message.content}</p>
-                      {message.role === 'assistant' && (
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-8 w-8 flex-shrink-0"
-                          onClick={() => playVoiceResponse(message.id, message.content)}
-                          disabled={playingAudio !== null && playingAudio !== message.id}
-                        >
-                          <Volume2 
-                            className={`w-4 h-4 ${playingAudio === message.id ? 'text-primary animate-pulse' : ''}`} 
-                          />
-                        </Button>
-                      )}
-                    </div>
+                    <p className="whitespace-pre-wrap">{message.content}</p>
                   </Card>
                 </div>
               ))}
@@ -341,7 +326,7 @@ export default function Chat() {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-2 text-center">
-                Click the speaker icon on AI messages to hear them (1 credit per message)
+                🎙️ Voice feature coming soon!
               </p>
             </div>
           </>
